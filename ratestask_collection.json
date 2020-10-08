@@ -1,0 +1,167 @@
+{
+	"info": {
+		"_postman_id": "53103baa-137c-4d46-85f4-4c434f348820",
+		"name": "Ratestask",
+		"description": "Ratestask API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Rates",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/rates?date_from=2016-01-01&date_to=2016-01-10&origin=CNCWN&destination=NOTRD",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rates"
+					],
+					"query": [
+						{
+							"key": "date_from",
+							"value": "2016-01-01"
+						},
+						{
+							"key": "date_to",
+							"value": "2016-01-10"
+						},
+						{
+							"key": "origin",
+							"value": "CNCWN"
+						},
+						{
+							"key": "destination",
+							"value": "NOTRD"
+						}
+					]
+				},
+				"description": "API endpoint that returns a list with the average prices for each day on a route between port codes origin and destination."
+			},
+			"response": []
+		},
+		{
+			"name": "Rates Null",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/rates_null?date_from=2016-01-01&date_to=2016-01-25&origin=CNCWN&destination=NOTRD",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rates_null"
+					],
+					"query": [
+						{
+							"key": "date_from",
+							"value": "2016-01-01"
+						},
+						{
+							"key": "date_to",
+							"value": "2016-01-25"
+						},
+						{
+							"key": "origin",
+							"value": "CNCWN"
+						},
+						{
+							"key": "destination",
+							"value": "NOTRD"
+						}
+					]
+				},
+				"description": "API endpoint return an empty value (JSON null) for days on which there are less than 3 prices in total."
+			},
+			"response": []
+		},
+		{
+			"name": "Price",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"date_from\": \"2020-01-02\",\n    \"date_to\": \"2020-01-03\",\n    \"origin_code\": \"CNCWN\",\n    \"destination_code\": \"DEBRE\",\n    \"price\": 1000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/price",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"price"
+					]
+				},
+				"description": "API endpoint to upload a price."
+			},
+			"response": []
+		},
+		{
+			"name": "Price in EUR",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"date_from\": \"2020-01-03\",\n    \"date_to\": \"2020-01-04\",\n    \"origin_code\": \"CNCWN\",\n    \"destination_code\": \"DEBRE\",\n    \"price\": 100,\n    \"currency\": \"EUR\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/price",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"price"
+					]
+				},
+				"description": "API endpoint to upload a price which accepts prices in different currencies."
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid Endpoint",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/invalid-endpoint",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"invalid-endpoint"
+					]
+				},
+				"description": "API endpoint that returns a list with the average prices for each day on a route between port codes origin and destination."
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
